@@ -18,7 +18,7 @@ class AddRoleIdToUsersTable extends Migration
             $table->foreign('role_id')->references('id')->on('roles');
         });
 
-        \App\User::where('is_admin', 1)->update(['role_id' => 2]);
+        \App\Models\User::where('is_admin', 1)->update(['role_id' => 2]);
     }
 
     /**

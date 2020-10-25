@@ -21,7 +21,7 @@ class CreateRolesTable extends Migration
 
         $roles = ['User', 'Administrator', 'Publisher'];
         foreach ($roles as $role) {
-            \App\Role::create(['name' => $role]);
+            \App\Models\Role::create(['name' => $role]);
         }
     }
 

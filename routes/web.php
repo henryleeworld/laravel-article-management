@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\JoinController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,27 +16,21 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/home', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::resource('articles', 'ArticleController');
+    Route::resource('articles', ArticleController::class);
     Route::view('invite', 'invite')->name('invite');
 
-    Route::get('join', 'JoinController@create')->name('join.create');
-    Route::post('join', 'JoinController@store')->name('join.store');
+    Route::get('join', [JoinController::class, 'create'])->name('join.create');
+    Route::post('join', [JoinController::class, 'store'])->name('join.store');
 
-    Route::get('organization/{organization_id}', 'JoinController@organization')->name('organization');
+    Route::get('organization/{organization_id}', [JoinController::class, 'organization'])->name('organization');
 
     // Administrator routes
     Route::group(['middleware' => 'is.admin'], function() {
-        Route::resource('categories', 'CategoryController');
+        Route::resource('categories', CategoryController::class);
     });
 });
