@@ -1,6 +1,6 @@
-# Laravel 8 文章管理
+# Laravel 9 文章管理
 
-你隨時可以撰寫、編輯或刪除文章。Laravel 8 文章管理主要是用的 [QuickAdminPanel](https://quickadminpanel.com) 生成的，除了一些定制代碼，可依需求彈性改造的工具。
+你隨時可以撰寫、編輯或刪除文章。
 
 ## 使用方式
 - 把整個專案複製一份到你的電腦裡，這裡指的「內容」不是只有檔案，而是指所有整個專案的歷史紀錄、分支、標籤等內容都會複製一份下來。
@@ -12,7 +12,7 @@ $ git clone
 ```sh
 $ composer install
 ```
-- 產⽣ Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
+- 產生 Laravel 要使用的一組 32 字元長度的隨機字串 APP_KEY 並存在 .env 內。
 ```sh
 $ php artisan key:generate
 ```
@@ -26,8 +26,8 @@ $ php artisan migrate --seed
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/2UcDj6v.png)
+![](https://i.imgur.com/TeYimGM.png)
 > 找出你要編輯的文章
 
-![](https://i.imgur.com/I1U4gDe.png)
+![](https://i.imgur.com/pLaTgwx.png)
 > 所有文章都會指派為其中一個類別。用戶無需具備任何 HTML 知識，情況就正如用 MS-Word 修改文檔一樣
