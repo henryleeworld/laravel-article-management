@@ -1,4 +1,4 @@
-# Laravel 9 文章管理
+# Laravel 10 文章管理
 
 你隨時可以撰寫、編輯或刪除文章。
 
@@ -20,14 +20,24 @@ $ php artisan key:generate
 ```sh
 $ php artisan migrate --seed
 ```
+- 執行安裝 Vite 和 Laravel 擴充套件引用的依賴項目。
+```sh
+$ npm install
+```
+- 執行正式環境版本化資源管道並編譯。
+```sh
+$ npm run build
+```
 - 在瀏覽器中輸入已定義的路由 URL 來訪問，例如：http://127.0.0.1:8000。
 - 你可以經由 `/register` 來進行註冊。
+- 完成註冊後，可以經由 `/login` 來進行登入。
+- 完成登入後，可以經由 `/articles` 來進行文章管理。
 
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/TeYimGM.png)
+![](https://i.imgur.com/XgvYdg6.png)
 > 找出你要編輯的文章
 
-![](https://i.imgur.com/pLaTgwx.png)
+![](https://i.imgur.com/AqaVAZl.png)
 > 所有文章都會指派為其中一個類別。用戶無需具備任何 HTML 知識，情況就正如用 MS-Word 修改文檔一樣
