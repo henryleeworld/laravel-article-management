@@ -42,7 +42,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
         $organizationId = auth()->user()->organization_id ? auth()->user()->organization_id : auth()->id();
-        Article::create($request->all() +
+        Article::create($request->except('_token') +
             [
                 'user_id' => $organizationId,
                 'published_at' => Gate::allows('publish-articles')
@@ -79,7 +79,7 @@ class ArticleController extends Controller
     {
         $this->authorize('update', $article);
 
-        $data = $request->all();
+        $data = $request->except(['_method', '_token']);
         if (Gate::allows('publish-articles')) {
             $data['published_at'] = $request->input('published') ? now() : null;
         }
