@@ -5,6 +5,9 @@ namespace Database\Factories;
 use App\Models\Article;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+/**
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Article>
+ */
 class ArticleFactory extends Factory
 {
     /**
@@ -17,13 +20,13 @@ class ArticleFactory extends Factory
     /**
      * Define the model's default state.
      *
-     * @return array
+     * @return array<string, mixed>
      */
-    public function definition()
+    public function definition(): array
     {
         return [
-            'title' => $this->faker->name,
-            'full_text' => $this->faker->name,
+            'title' => fake()->name,
+            'full_text' => fake()->name,
         ];
     }
 }

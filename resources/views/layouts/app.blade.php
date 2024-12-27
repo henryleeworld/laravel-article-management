@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', trans('global.laravel')) }}</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.bunny.net">
@@ -63,14 +63,14 @@
                                 </li>
                             @endif
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('invite') }}">{{ trans('global.invite') }}</a>
+                                <a class="nav-link" href="{{ route('invite') }}">{{ __('Invite') }}</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('articles.index') }}">{{ trans('global.articles') }}</a>
+                                <a class="nav-link" href="{{ route('articles.index') }}">{{ __('Articles') }}</a>
                             </li>
                             @can('manage-categories')
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('categories.index') }}">{{ trans('global.categories') }}</a>
+                                <a class="nav-link" href="{{ route('categories.index') }}">{{ __('Categories') }}</a>
                             </li>
                             @endcan
                             <li class="nav-item dropdown">

@@ -5,19 +5,31 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Article extends Model
 {
     use HasFactory;
 
+    /**
+     * The attributes that are mass assignable.
+     *
+     * @var array<int, string>
+     */
     protected $fillable = ['title', 'full_text', 'category_id', 'user_id', 'published_at'];
 
-    public function user()
+    /**
+     * Get the user that owns the article.
+     */
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
     }
 
-    protected static function booted()
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
     {
         if (auth()->check() && !auth()->user()->is_admin) {
             static::addGlobalScope('user', function (Builder $builder) {

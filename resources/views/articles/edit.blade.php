@@ -4,20 +4,20 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ trans('global.edit_article') }}</div>
+                <div class="card-header">{{ __('Edit Article') }}</div>
                 <div class="card-body">
                     <form action="{{ route('articles.update', $article->id) }}" method="POST">
                         @csrf
                         @method('PUT')
-                        {{ trans('global.title') }}{{ trans('global.colon_mark') }}
+                        {{ __('Title') . __(':') }}
                         <br />
                         <input type="text" name="title" class="form-control" value="{{ $article->title }}" />
                         <br />
-                        {{ trans('global.full_text') }}{{ trans('global.colon_mark') }}
+                        {{ __('Full text') . __(':') }}
                         <br />
                         <textarea class="form-control" rows="10" name="full_text">{{ $article->full_text }}</textarea>
                         <br />
-                        {{ trans('global.category') }}{{ trans('global.colon_mark') }}
+                        {{ __('Category') . __(':') }}
                         <br />
                         <select class="form-control" name="category_id">
                             @foreach ($categories as $category)
@@ -28,10 +28,10 @@
                         <br />
                         @can('publish-articles')
                         <input type="checkbox" name="published" value="1"
-                               @if ($article->published_at) checked @endif /> {{ trans('global.published') }}
+                               @if ($article->published_at) checked @endif /> {{ __('Published') }}
                         <br /><br />
                         @endcan
-                        <input type="submit" value="{{ trans('global.update_article') }}" class="btn btn-primary" />
+                        <input type="submit" value="{{ __('Update Article') }}" class="btn btn-primary" />
                     </form>
                 </div>
             </div>

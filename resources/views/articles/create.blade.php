@@ -4,19 +4,19 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ trans('global.new_article') }}</div>
+                <div class="card-header">{{ __('New Article') }}</div>
                 <div class="card-body">
                     <form action="{{ route('articles.store') }}" method="POST">
                         @csrf
-                        {{ trans('global.title') }}{{ trans('global.colon_mark') }}
+                        {{ __('Title') . __(':') }}
                         <br />
                         <input type="text" name="title" class="form-control" />
                         <br />
-                        {{ trans('global.full_text') }}{{ trans('global.colon_mark') }}
+                        {{ __('Full text') . __(':') }}
                         <br />
                         <textarea class="form-control" rows="10" name="full_text"></textarea>
                         <br />
-                        {{ trans('global.category') }}{{ trans('global.colon_mark') }}
+                        {{ __('Category') . __(':') }}
                         <br />
                         <select class="form-control" name="category_id">
                             @foreach ($categories as $category)
@@ -25,10 +25,10 @@
                         </select>
                         <br />
                         @can('publish-articles')
-                        <input type="checkbox" name="published" value="1" />{{ trans('global.published') }}
+                        <input type="checkbox" name="published" value="1" />{{ __('Published') }}
                         <br /><br />
                         @endcan
-                        <input type="submit" value="{{ trans('global.save_article') }}" class="btn btn-primary" />
+                        <input type="submit" value="{{ __('Save Article') }}" class="btn btn-primary" />
                     </form>
                 </div>
             </div>
