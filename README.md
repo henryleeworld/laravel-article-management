@@ -1,4 +1,4 @@
-# Laravel 11 文章管理
+# Laravel 12 文章管理
 
 你隨時可以撰寫、編輯或刪除文章。
 
@@ -36,8 +36,8 @@ $ npm run build
 ----
 
 ## 畫面截圖
-![](https://i.imgur.com/WVZjrMl.png)
+![](https://i.imgur.com/I9JXvSX.png)
 > 找出你要編輯的文章
 
-![](https://i.imgur.com/QvU2vmF.png)
+![](https://i.imgur.com/BkKuz2I.png)
 > 所有文章都會指派為其中一個類別。用戶無需具備任何 HTML 知識，情況就正如用 MS-Word 修改文檔一樣

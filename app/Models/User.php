@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -10,12 +11,13 @@ use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
+    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $fillable = [
         'name',
@@ -29,7 +31,7 @@ class User extends Authenticatable
     /**
      * The attributes that should be hidden for serialization.
      *
-     * @var array<int, string>
+     * @var list<string>
      */
     protected $hidden = [
         'password',
@@ -49,23 +51,34 @@ class User extends Authenticatable
         ];
     }
 
-    public function getRoleIdAttribute()
+    /**
+     * Get the user's role id.
+     */
+    public function roleId(): Attribute
     {
-        if (session('organization_role_id')) {
-            return session('organization_role_id');
-        }
-
-        return $this->attributes['role_id'];
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => session('organization_role_id') ? session('organization_role_id') : $attributes['role_id'],
+        );
     }
 
-    public function getIsAdminAttribute()
+    /**
+     * check the user is admin or not.
+     */
+    public function isAdmin(): Attribute
     {
-        return $this->role_id == 2;
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => $attributes['role_id'] == 2,
+        );
     }
 
-    public function getIsPublisherAttribute()
+    /**
+     * check the user is publisher or not.
+     */
+    public function isPublisher(): Attribute
     {
-        return $this->role_id == 3;
+        return Attribute::make(
+            get: fn (mixed $value, array $attributes) => $attributes['role_id'] == 3,
+        );
     }
 
     /**
@@ -79,6 +92,9 @@ class User extends Authenticatable
             'organization_id')->withPivot(['role_id']);
     }
 
+    /**
+     * Get the user's organization id.
+     */
     public function getOrganizationIdAttribute()
     {
         if (session('organization_id')) {
