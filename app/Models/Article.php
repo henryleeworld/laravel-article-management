@@ -2,22 +2,18 @@
 
 namespace App\Models;
 
+use Database\Factories\ArticleFactory;
+use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
+#[Fillable(['title', 'full_text', 'category_id', 'user_id', 'published_at'])]
 class Article extends Model
 {
-    /** @use HasFactory<\Database\Factories\ArticleFactory> */
+    /** @use HasFactory<ArticleFactory> */
     use HasFactory;
-
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var list<string>
-     */
-    protected $fillable = ['title', 'full_text', 'category_id', 'user_id', 'published_at'];
 
     /**
      * Get the user that owns the article.

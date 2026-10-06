@@ -18,6 +18,6 @@ class ArticlePolicy
     {
         return $user->id === $article->user_id || $user->organization_id === $article->user_id
             ? Response::allow()
-            : Response::deny('You do not own this article.');
+            : Response::deny(__('You do not own this article.'));
     }
 }

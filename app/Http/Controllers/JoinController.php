@@ -8,7 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class JoinController extends Controller
 {
-
+    /**
+     * Show the form for creating a new resource.
+     */
     public function create()
     {
         $organization = User::findOrFail(request('organization_id'));
@@ -16,6 +18,9 @@ class JoinController extends Controller
         return view('join', compact('organization'));
     }
 
+    /**
+     * Store a newly created resource in storage.
+     */
     public function store(Request $request)
     {
         auth()->user()->organizations()->attach($request->input('organization_id'),
